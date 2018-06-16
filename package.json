@@ -1,6 +1,6 @@
 {
-    "name": "git-duet",
-    "displayName": "git-duet",
+    "name": "git-duet-vscode",
+    "displayName": "git-duet for VSCode",
     "description": "git duet helpers for VSCode",
     "version": "0.0.1",
     "publisher": "PhilAlsford",
