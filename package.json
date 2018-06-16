@@ -1,7 +1,7 @@
 {
     "name": "git-duet",
     "displayName": "git-duet",
-    "description": "git duet in VSCode",
+    "description": "git duet helpers for VSCode",
     "version": "0.0.1",
     "publisher": "philalsford",
     "engines": {
