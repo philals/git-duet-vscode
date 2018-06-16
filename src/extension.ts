@@ -11,6 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
+    console.log('Congratulations, your extension "GIT AS" is now active!');
 
     let disposable_gitSolo = vscode.commands.registerCommand('extension.gitSolo', async () => {
         const value = await vscode.window.showInputBox({ prompt: 'Who is the solo (intial)?' });
@@ -49,17 +50,12 @@ export function activate(context: vscode.ExtensionContext) {
 
     let wordCounter = new WordCounter();
 
-    let disposable = vscode.commands.registerCommand('extension.sayHello', async () => {
-        await wordCounter.updateWordCount();
-    });
-
-    wordCounter.show();
+    wordCounter.updateWordCount();
 
     context.subscriptions.push(disposable_gitSolo);
     context.subscriptions.push(disposable_gitDuet);
     context.subscriptions.push(disposable_gitAs);
     context.subscriptions.push(wordCounter);
-    context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated
@@ -70,13 +66,13 @@ class WordCounter {
 
     private _statusBarItem: StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
 
-    public async updateWordCount() {
-        let names = await getNames();
-        this._statusBarItem.text = names.length === 1 ? `$(person) Commiting as 🥝 ${names[0]}` : `👥 Commiting as 🥝 ${names[0]} + 🥝 ${names[1]}`;
+    constructor() {
         this._statusBarItem.show();
     }
 
-    public show() {
+    public async updateWordCount() {
+        let names = await getNames();
+        this._statusBarItem.text = names.length === 1 ? `$(person) Commiting as 🥝 ${names[0]}` : `👥 Commiting as 🥝 ${names[0]} + 🥝 ${names[1]}`;
         this._statusBarItem.show();
     }
 
