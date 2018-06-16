@@ -1,6 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
-import { printNames } from './duetFunctions';
+import { StatusBarAlignment, StatusBarItem, window } from 'vscode';
+import { getNames, printNames } from './duetFunctions';
 import { spawn } from './spawnCommandAsync';
 
 // this method is called when your extension is activated
@@ -43,11 +44,35 @@ export function activate(context: vscode.ExtensionContext) {
         printNames(vscode.window.showInformationMessage);
     });
 
+    let wordCounter = new WordCounter();
+
+    let disposable = vscode.commands.registerCommand('extension.sayHello', async () => {
+        await wordCounter.updateWordCount();
+    });
+
     context.subscriptions.push(disposable_gitSolo);
     context.subscriptions.push(disposable_gitDuet);
     context.subscriptions.push(disposable_gitAs);
+    context.subscriptions.push(wordCounter);
+    context.subscriptions.push(disposable);
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() {
+}
+
+class WordCounter {
+
+    private _statusBarItem: StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
+
+    public async updateWordCount() {
+
+        let names = await getNames();
+        this._statusBarItem.text = names.length === 1 ? `Commiting as 🥝${names[0]}` : `Commiting as 🥝${names[0]} + 🥝${names[1]}`;
+        this._statusBarItem.show();
+    }
+
+    dispose() {
+        this._statusBarItem.dispose();
+    }
 }
