@@ -1,6 +1,17 @@
 import { spawn } from "./spawnCommandAsync";
 
 export async function printNames(showInformationMessage: any) {
+   let names = await getNames();
+
+   if (names.length === 1) {
+      showInformationMessage("git solo 🥝: " + names[0]);
+   } else {
+      showInformationMessage(`git duet 🥝🥝: ${names[0]} + ${names[1]}`);
+
+   }
+}
+
+export async function getNames() {
    let res = await spawn('git duet');
    let allLines = res.split('\n');
 
@@ -8,7 +19,7 @@ export async function printNames(showInformationMessage: any) {
       let firstLine = allLines[0];
       let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
 
-      showInformationMessage("git solo 🥝: " + firstName);
+      return [firstName];
 
    } else {
       let firstLine = allLines[0];
@@ -16,6 +27,6 @@ export async function printNames(showInformationMessage: any) {
       let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
       let secondName = thirdLine.split('=')[1].replace(`'`, '').replace(`'`, '');
 
-      showInformationMessage(`git duet 🥝🥝: ${firstName} + ${secondName}`);
+      return [firstName, secondName];
    }
 }
