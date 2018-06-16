@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
         const value = await vscode.window.showInputBox({ prompt: 'Who is the solo (intial)?' });
 
         await spawn('git solo ' + value);
-        await wordCounter.updateWordCount();
+        await wordCounter.update();
         await printNames(vscode.window.showInformationMessage);
     });
 
@@ -25,7 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
         const value = await vscode.window.showInputBox({ prompt: 'Who is the duet (intials)?' });
 
         await spawn('git duet ' + value);
-        await wordCounter.updateWordCount();
+        await wordCounter.update();
         printNames(vscode.window.showInformationMessage);
     });
 
@@ -44,13 +44,12 @@ export function activate(context: vscode.ExtensionContext) {
             await spawn('git duet ' + value);
         }
 
-        await wordCounter.updateWordCount();
+        await wordCounter.update();
         printNames(vscode.window.showInformationMessage);
     });
 
-    let wordCounter = new WordCounter();
-
-    wordCounter.updateWordCount();
+    let wordCounter = new StatusBar();
+    wordCounter.update();
 
     context.subscriptions.push(disposable_gitSolo);
     context.subscriptions.push(disposable_gitDuet);
@@ -62,16 +61,16 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() {
 }
 
-class WordCounter {
+class StatusBar {
 
     private _statusBarItem: StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
 
-    constructor() {
-        this._statusBarItem.show();
-    }
-
-    public async updateWordCount() {
+    public async update() {
         let names = await getNames();
+        if (names.length === 0) {
+            vscode.window.showErrorMessage('Please install git duet');
+        }
+
         this._statusBarItem.text = names.length === 1 ? `$(person) Commiting as 🥝 ${names[0]}` : `👥 Commiting as 🥝 ${names[0]} + 🥝 ${names[1]}`;
         this._statusBarItem.show();
     }

@@ -7,26 +7,29 @@ export async function printNames(showInformationMessage: any) {
       showInformationMessage("git solo 🥝: " + names[0]);
    } else {
       showInformationMessage(`git duet 🥝🥝: ${names[0]} + ${names[1]}`);
-
    }
 }
 
 export async function getNames() {
-   let res = await spawn('git duet');
-   let allLines = res.split('\n');
+   try {
+      let res = await spawn('git duet');
+      let allLines = res.split('\n');
 
-   if (allLines[0].split('=')[1] === allLines[2].split('=')[1]) {
-      let firstLine = allLines[0];
-      let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
+      if (allLines[0].split('=')[1] === allLines[2].split('=')[1]) {
+         let firstLine = allLines[0];
+         let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
 
-      return [firstName];
+         return [firstName];
 
-   } else {
-      let firstLine = allLines[0];
-      let thirdLine = allLines[2];
-      let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
-      let secondName = thirdLine.split('=')[1].replace(`'`, '').replace(`'`, '');
+      } else {
+         let firstLine = allLines[0];
+         let thirdLine = allLines[2];
+         let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
+         let secondName = thirdLine.split('=')[1].replace(`'`, '').replace(`'`, '');
 
-      return [firstName, secondName];
+         return [firstName, secondName];
+      }
+   } catch (error) {
+      return [];
    }
 }

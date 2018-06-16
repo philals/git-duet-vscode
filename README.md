@@ -1,65 +1,37 @@
-# git-duet README
-
-This is the README for your extension "git-duet". After writing up a brief description, we recommend including the following sections.
+# git-duet for VSCode
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extention will add a status bar in the bottom left showing who you are commiting as.
 
-For example if there is an image subfolder under your extension project workspace:
+It also add the follow commands:
+- `git duet`: then a promt asking for your duet pairs intials
+- `git solo`: then a prompt asking for your solo initals
+- `git as`: combination of the top two commands. It will take in a solo intials (eg `pa`) or pairing intials (eg: `pa bt`)
 
-\!\[feature X\]\(images/feature-x.png\)
+All intials are space seperated.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+\!\[feature X\]\(images/comingsoon.jpg\)
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+You must have git duet installed. This extention displays information from git duet
+
+https://github.com/git-duet/git-duet
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+No settings yet. Ask for them by sending an issue.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Very untested in real dev day
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
+- Only shows status when there is a '.git' directoy
+- Displays pop up info when setting pairs/solo/git as
+- Should handle some errors when things are not configured correctly
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
