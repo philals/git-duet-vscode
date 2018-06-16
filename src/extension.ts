@@ -31,8 +31,27 @@ export function activate(context: vscode.ExtensionContext) {
         printNames(vscode.window.showInformationMessage);
     });
 
+    let disposable_gitAs = vscode.commands.registerCommand('extension.gitAs', async () => {
+        const value = await vscode.window.showInputBox({ prompt: 'Git As:' });
+
+        if (!value) {
+            return;
+        }
+
+        let names = value.split(' ');
+
+        if (names.length === 1) {
+            await spawn('git solo ' + value);
+        } else {
+            await spawn('git duet ' + value);
+        }
+
+        printNames(vscode.window.showInformationMessage);
+    });
+
     context.subscriptions.push(disposable_gitSolo);
     context.subscriptions.push(disposable_gitDuet);
+    context.subscriptions.push(disposable_gitAs);
 }
 
 // this method is called when your extension is deactivated

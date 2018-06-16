@@ -8,7 +8,7 @@ export async function printNames(showInformationMessage: any) {
       let firstLine = allLines[0];
       let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
 
-      showInformationMessage("git solo: " + firstName);
+      showInformationMessage("git solo 🥝: " + firstName);
 
    } else {
       let firstLine = allLines[0];
@@ -16,6 +16,6 @@ export async function printNames(showInformationMessage: any) {
       let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
       let secondName = thirdLine.split('=')[1].replace(`'`, '').replace(`'`, '');
 
-      showInformationMessage(`git duet: ${firstName} + ${secondName}`);
+      showInformationMessage(`git duet 🥝🥝: ${firstName} + ${secondName}`);
    }
 }

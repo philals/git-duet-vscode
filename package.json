@@ -12,7 +12,8 @@
     ],
     "activationEvents": [
         "onCommand:extension.gitSolo",
-        "onCommand:extension.gitDuet"
+        "onCommand:extension.gitDuet",
+        "onCommand:extension.gitAs"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -24,6 +25,10 @@
             {
                 "command": "extension.gitDuet",
                 "title": "git duet"
+            },
+            {
+                "command": "extension.gitAs",
+                "title": "git as"
             }
         ]
     },
