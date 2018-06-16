@@ -16,6 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
         const value = await vscode.window.showInputBox({ prompt: 'Who is the solo (intial)?' });
 
         await spawn('git solo ' + value);
+        await wordCounter.updateWordCount();
         await printNames(vscode.window.showInformationMessage);
     });
 
@@ -23,6 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
         const value = await vscode.window.showInputBox({ prompt: 'Who is the duet (intials)?' });
 
         await spawn('git duet ' + value);
+        await wordCounter.updateWordCount();
         printNames(vscode.window.showInformationMessage);
     });
 
@@ -41,6 +43,7 @@ export function activate(context: vscode.ExtensionContext) {
             await spawn('git duet ' + value);
         }
 
+        await wordCounter.updateWordCount();
         printNames(vscode.window.showInformationMessage);
     });
 
@@ -49,6 +52,8 @@ export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerCommand('extension.sayHello', async () => {
         await wordCounter.updateWordCount();
     });
+
+    wordCounter.show();
 
     context.subscriptions.push(disposable_gitSolo);
     context.subscriptions.push(disposable_gitDuet);
@@ -66,9 +71,12 @@ class WordCounter {
     private _statusBarItem: StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
 
     public async updateWordCount() {
-
         let names = await getNames();
-        this._statusBarItem.text = names.length === 1 ? `Commiting as 🥝${names[0]}` : `Commiting as 🥝${names[0]} + 🥝${names[1]}`;
+        this._statusBarItem.text = names.length === 1 ? `$(person) Commiting as 🥝 ${names[0]}` : `👥 Commiting as 🥝 ${names[0]} + 🥝 ${names[1]}`;
+        this._statusBarItem.show();
+    }
+
+    public show() {
         this._statusBarItem.show();
     }
 
