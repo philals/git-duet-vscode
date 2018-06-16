@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
         const value = await vscode.window.showInputBox({ prompt: 'Git As:' });
 
         if (!value) {
-            return;
+            return vscode.window.showErrorMessage('😹 Something went wrong... Check your input.. 😹');
         }
 
         let names = value.split(' ');
