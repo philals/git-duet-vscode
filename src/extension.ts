@@ -18,21 +18,21 @@ export function activate(context: vscode.ExtensionContext) {
     // The commandId parameter must match the command field in package.json
 
     let disposable_gitSolo = vscode.commands.registerCommand('extension.gitSolo', async () => {
-        const value = await vscode.window.showInputBox({ prompt: 'Who is solo?' });
+        const value = await vscode.window.showInputBox({ prompt: 'Who is the solo (intial)?' });
 
         await spawn('git solo ' + value);
         await printNames(vscode.window.showInformationMessage);
     });
 
     let disposable_gitDuet = vscode.commands.registerCommand('extension.gitDuet', async () => {
-        const value = await vscode.window.showInputBox({ prompt: 'Who is duet?' });
+        const value = await vscode.window.showInputBox({ prompt: 'Who is the duet (intials)?' });
 
         await spawn('git duet ' + value);
         printNames(vscode.window.showInformationMessage);
     });
 
     let disposable_gitAs = vscode.commands.registerCommand('extension.gitAs', async () => {
-        const value = await vscode.window.showInputBox({ prompt: 'Git As:' });
+        const value = await vscode.window.showInputBox({ prompt: 'Enter the 2+ initals to commit as:' });
 
         if (!value) {
             return vscode.window.showErrorMessage('😹 Something went wrong... Check your input.. 😹');
