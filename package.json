@@ -3,7 +3,8 @@
     "displayName": "git-duet",
     "description": "git duet helpers for VSCode",
     "version": "0.0.1",
-    "publisher": "philalsford",
+    "publisher": "PhilAlsford",
+    "repository": "https://github.com/philals/git-duet-vscode",
     "engines": {
         "vscode": "^1.24.0"
     },
