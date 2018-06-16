@@ -15,7 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.gitSolo', async () => {
+    let disposable_gitSolo = vscode.commands.registerCommand('extension.gitSolo', async () => {
         // The code you place here will be executed every time your command is executed
         const value = await vscode.window.showInputBox({ prompt: 'Who is solo?' });
 
@@ -35,7 +35,30 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
 
-    context.subscriptions.push(disposable);
+    let disposable_gitDuet = vscode.commands.registerCommand('extension.gitDuet', async () => {
+        // The code you place here will be executed every time your command is executed
+        const value = await vscode.window.showInputBox({ prompt: 'Who is duet?' });
+
+        let child = spawnCommand('git duet ' + value);
+
+        child.stdout.on('data', function (data: string) {
+
+            let allLines = data.toString();
+            let firstLine = allLines.split('\n')[0];
+            let thirdLine = allLines.split('\n')[2];
+            let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
+            let secondName = thirdLine.split('=')[1].replace(`'`, '').replace(`'`, '');
+
+            vscode.window.showInformationMessage(`git duet: ${firstName} + ${secondName}`);
+        });
+
+        child.on('exit', function (exitCode: string) {
+            console.log('exit', exitCode);
+        });
+    });
+
+    context.subscriptions.push(disposable_gitSolo);
+    context.subscriptions.push(disposable_gitDuet);
 }
 
 // this method is called when your extension is deactivated
