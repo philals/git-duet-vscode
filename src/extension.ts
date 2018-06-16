@@ -2,7 +2,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { getDuetPair, getDuetSolo } from './duetFunctions';
+import { printNames } from './duetFunctions';
 import { spawn } from './spawnCommandAsync';
 
 // this method is called when your extension is activated
@@ -21,19 +21,14 @@ export function activate(context: vscode.ExtensionContext) {
         const value = await vscode.window.showInputBox({ prompt: 'Who is solo?' });
 
         await spawn('git solo ' + value);
-
-        let { firstName } = await getDuetSolo();
-
-        vscode.window.showInformationMessage("git solo: " + firstName);
+        await printNames(vscode.window.showInformationMessage);
     });
 
     let disposable_gitDuet = vscode.commands.registerCommand('extension.gitDuet', async () => {
         const value = await vscode.window.showInputBox({ prompt: 'Who is duet?' });
 
         await spawn('git duet ' + value);
-
-        let { firstName, secondName } = await getDuetPair();
-        vscode.window.showInformationMessage(`git duet: ${firstName} + ${secondName}`);
+        printNames(vscode.window.showInformationMessage);
     });
 
     context.subscriptions.push(disposable_gitSolo);

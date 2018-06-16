@@ -1,21 +1,21 @@
 import { spawn } from "./spawnCommandAsync";
 
-export async function getDuetPair() {
-   let allLines = await spawn('git duet');
+export async function printNames(showInformationMessage: any) {
+   let res = await spawn('git duet');
+   let allLines = res.split('\n');
 
-   let firstLine = allLines.split('\n')[0];
-   let thirdLine = allLines.split('\n')[2];
-   let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
-   let secondName = thirdLine.split('=')[1].replace(`'`, '').replace(`'`, '');
+   if (allLines[0].split('=')[1] === allLines[2].split('=')[1]) {
+      let firstLine = allLines[0];
+      let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
 
-   return { firstName, secondName };
-}
+      showInformationMessage("git solo: " + firstName);
 
-export async function getDuetSolo() {
-   let allLines = await spawn('git duet');
+   } else {
+      let firstLine = allLines[0];
+      let thirdLine = allLines[2];
+      let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
+      let secondName = thirdLine.split('=')[1].replace(`'`, '').replace(`'`, '');
 
-   let firstLine = allLines.split('\n')[0];
-   let firstName = firstLine.split('=')[1].replace(`'`, '').replace(`'`, '');
-
-   return { firstName };
+      showInformationMessage(`git duet: ${firstName} + ${secondName}`);
+   }
 }
