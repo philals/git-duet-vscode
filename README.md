@@ -1,5 +1,7 @@
 # git-duet for VSCode
 
+![gif in actiont](/images/git-duet-vscode2.gif)
+
 ## Features
 
 This extention will add a status bar in the bottom left showing who you are commiting as.
@@ -10,8 +12,6 @@ It also add the follow commands:
 - `git as`: combination of the top two commands. It will take in solo intials (eg `pa`) or pairing intials (eg: `pa bt`)
 
 All intials are space seperated.
-
-![gif in actiont](/images/git-duet-vscode2.gif)
 
 ## Requirements
 
