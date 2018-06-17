@@ -11,7 +11,7 @@ It also add the follow commands:
 
 All intials are space seperated.
 
-\!\[feature X\]\(images/comingsoon.jpg\)
+![gif in actiont](/images/git-duet-vscode2.gif)
 
 ## Requirements
 
