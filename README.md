@@ -31,8 +31,9 @@ Very untested. I have not used it for a full day yet. Publishing now to get feed
 
 ## Release Notes
 
+### 0.0.2
+- Better emoji
 ### 0.0.1
-
 - Only shows status when there is a `.git` directoy in the solution
 - Displays pop up info when setting `pairs`/`solo`/`git as`
 - Should handle some errors when things are not configured correctly
