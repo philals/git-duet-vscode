@@ -30,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     let disposable_gitAs = vscode.commands.registerCommand('extension.gitAs', async () => {
-        const value = await vscode.window.showInputBox({ prompt: 'Enter the 2+ initals to commit as:' });
+        const value = await vscode.window.showInputBox({ prompt: 'Enter 1 or more initals to commit as:' });
 
         if (!value) {
             return vscode.window.showErrorMessage('😹 Something went wrong... Check your input.. 😹');
