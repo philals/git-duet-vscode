@@ -4,9 +4,9 @@ export async function printNames(showInformationMessage: any) {
    let names = await getNames();
 
    if (names.length === 1) {
-      showInformationMessage("git solo 🥝: " + names[0]);
+      showInformationMessage("👊 git solo: " + names[0]);
    } else {
-      showInformationMessage(`git duet 🥝🥝: ${names[0]} + ${names[1]}`);
+      showInformationMessage(`🤜🤛 git duet: ${names[0]} & ${names[1]}`);
    }
 }
 

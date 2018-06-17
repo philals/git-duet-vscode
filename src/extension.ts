@@ -71,7 +71,7 @@ class StatusBar {
             vscode.window.showErrorMessage('Please install git duet');
         }
 
-        this._statusBarItem.text = names.length === 1 ? `$(person) Commiting as 🥝 ${names[0]}` : `👥 Commiting as 🥝 ${names[0]} + 🥝 ${names[1]}`;
+        this._statusBarItem.text = names.length === 1 ? `👊 git as: ${names[0]}` : `🤜🤛 git as: ${names[0]} & ${names[1]}`;
         this._statusBarItem.show();
     }
 
