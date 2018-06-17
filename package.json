@@ -2,12 +2,13 @@
     "name": "git-duet-vscode",
     "displayName": "git-duet for VSCode",
     "description": "git duet helpers for VSCode",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "PhilAlsford",
     "repository": "https://github.com/philals/git-duet-vscode",
     "engines": {
         "vscode": "^1.24.0"
     },
+    "icon": "images/logo.png",
     "categories": [
         "Other"
     ],
