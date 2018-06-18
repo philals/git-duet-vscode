@@ -69,6 +69,7 @@ class StatusBar {
         let names = await getNames();
         if (names.length === 0) {
             vscode.window.showErrorMessage('Please install git duet');
+            return;
         }
 
         this._statusBarItem.text = names.length === 1 ? `👊 git as: ${names[0]}` : `🤜🤛 git as: ${names[0]} & ${names[1]}`;
