@@ -31,6 +31,8 @@ Very untested. I have not used it for a full day yet. Publishing now to get feed
 
 ## Release Notes
 
+### 0.0.4
+- Changes to shelljs for Windows
 ### 0.0.3
 - Better message
 ### 0.0.2
