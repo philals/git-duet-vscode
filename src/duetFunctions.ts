@@ -14,6 +14,7 @@ export async function getNames() {
    try {
       let res = await spawn('git duet');
       let allLines = res.split('\n');
+      let GIT_DUET_AUTHORS_FILE = process.env.GIT_DUET_AUTHORS_FILE;
 
       if (allLines[0].split('=')[1] === allLines[2].split('=')[1]) {
          let firstLine = allLines[0];

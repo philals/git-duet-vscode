@@ -27,10 +27,14 @@ No settings yet. Ask for them by sending an issue.
 
 ## Known Issues
 
-Very untested. I have not used it for a full day yet. Publishing now to get feedback from the team
+Very untested. I have not used it for a full day yet. Publishing now to get feedback from the team.
+
+Windows: It seems VSCode does not load your .bash_profile by default - unless you are launching VSCode via `code .`. Therefore use `code .` from the command line to launch VSCode. (https://github.com/Microsoft/vscode/issues/8434#issuecomment-229310561)
 
 ## Release Notes
 
+### 0.0.5
+- Don't do status bar if `git duet` fails
 ### 0.0.4
 - Changes to shelljs for Windows
 ### 0.0.3
