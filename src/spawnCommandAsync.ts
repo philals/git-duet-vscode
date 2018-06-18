@@ -5,14 +5,6 @@ export async function spawn(command: string): Promise<string> {
 
       let child = spawnCommand.exec(command);
       return resolve(child.stdout);
-
-      // child.stdout.on('data', function (data: string) {
-      //    return resolve(data.toString());
-      // });
-
-      // child.on('exit', function (exitCode: string) {
-      //    return reject(exitCode);
-      // });
    });
 }
 
