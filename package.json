@@ -47,9 +47,10 @@
         "vscode": "^1.1.6",
         "tslint": "^5.8.0",
         "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "@types/mocha": "^2.2.42",
+        "@types/shelljs": "^0.8.0"
     },
     "dependencies": {
-        "spawn-command": "0.0.2-1"
+        "shelljs": "^0.8.2"
     }
 }
